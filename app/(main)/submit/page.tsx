@@ -27,6 +27,7 @@ import {
   LayoutTemplate,
   FileText as TextIcon
 } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const initialForm = {
   productName: "",
@@ -59,6 +60,8 @@ const SubmitProduct = () => {
   const [pending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<string>("form");
 
+  const { data: session } = useSession();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type, files } = e.target as any;
     if (type === "file" && files && files[0]) {
@@ -84,6 +87,7 @@ const SubmitProduct = () => {
       if (value) formData.append(key, value as string);
     });
     if (file) formData.append("productImage", file);
+    formData.append("userId", session?.user?.id || "");
     setResult(null);
     setActiveTab("processing");
     
@@ -549,7 +553,7 @@ const SubmitProduct = () => {
                     <CardTitle>AI Creatives Generated Successfully</CardTitle>
                   </div>
                   <CardDescription>
-                    We've created {enhancedResults.creatives.length} marketing visuals for {form.productName}
+                    We've created {enhancedResults?.creatives?.length} marketing visuals for {form.productName}
                   </CardDescription>
                 </CardHeader>
               </Card>
