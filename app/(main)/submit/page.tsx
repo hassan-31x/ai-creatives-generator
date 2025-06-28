@@ -426,6 +426,7 @@ const SubmitProduct = () => {
                       <Sparkles className="h-4 w-4 text-emerald-700" />
                     </div>
                     <div>
+                        
                       <p className="text-sm font-medium">Ad Campaigns</p>
                       <p className="text-xs text-muted-foreground">Ready-to-use advertising</p>
                     </div>
@@ -560,7 +561,7 @@ const SubmitProduct = () => {
                         </div>
                       </div>
                       <CardContent className="p-4">
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between mb-3">
                           <div className="flex items-center gap-2">
                             <div className="p-1.5 rounded-md bg-slate-100">
                               {getSocialIcon(creative.type)}
@@ -574,6 +575,35 @@ const SubmitProduct = () => {
                             {creative.type.replace('_', ' ')}
                           </Badge>
                         </div>
+                        
+                        {creative.assetDetails && (
+                          <div className="mt-3 pt-3 border-t border-slate-100 text-xs space-y-2">
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Background:</span>
+                              <span className="text-muted-foreground">{creative.assetDetails.backgroundTone}</span>
+                            </div>
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Surface:</span>
+                              <span className="text-muted-foreground">{creative.assetDetails.surfaceType}</span>
+                            </div>
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Accent:</span>
+                              <span className="text-muted-foreground">{creative.assetDetails.accentProp}</span>
+                            </div>
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Lighting:</span>
+                              <span className="text-muted-foreground">{creative.assetDetails.lighting}</span>
+                            </div>
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Camera Angle:</span>
+                              <span className="text-muted-foreground">{creative.assetDetails.cameraAngle}</span>
+                            </div>
+                            <div className="flex gap-1">
+                              <span className="font-medium min-w-24">Overlay Text:</span>
+                              <span className="text-muted-foreground italic">"{creative.assetDetails.overlayText}"</span>
+                            </div>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   ))}
