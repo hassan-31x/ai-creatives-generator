@@ -148,7 +148,8 @@ async function generateImageWithOpenAI(
     formData.append('prompt', prompt);
     formData.append('n', '1');
     formData.append('size', '1024x1024');
-    formData.append('quality', 'high');
+    // TODO: Change to high depending on the user's subscription
+    formData.append('quality', 'low');
     
     // Add the image file - use fs.createReadStream for Node.js environment
     formData.append('image', fs.createReadStream(sourceImagePath));
