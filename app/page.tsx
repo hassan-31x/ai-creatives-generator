@@ -1,3 +1,5 @@
+'use client'
+
 import LoginButton from "@/components/auth/login-button";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
