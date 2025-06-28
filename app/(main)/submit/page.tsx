@@ -131,6 +131,28 @@ const SubmitProduct = () => {
     }
   };
 
+  // Helper to download a single image
+  const downloadImage = async (url: string, filename: string) => {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  };
+
+  // Helper to download all images
+  const downloadAllImages = async () => {
+    if (!enhancedResults?.creatives) return;
+    for (const creative of enhancedResults.creatives) {
+      const filename = `${creative.title.replace(/\s+/g, '_').toLowerCase()}.png`;
+      await downloadImage(creative.imageUrl, filename);
+    }
+  };
+
   return (
     <div className="container max-w-6xl mx-auto py-8 px-4">
       <div className="mb-8">
@@ -538,7 +560,7 @@ const SubmitProduct = () => {
                     <ImageIcon className="h-5 w-5 text-blue-600" />
                     Social Media Creatives
                   </h3>
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button variant="outline" size="sm" className="gap-2" onClick={downloadAllImages}>
                     <Download className="h-4 w-4" />
                     Download All
                   </Button>
@@ -554,10 +576,19 @@ const SubmitProduct = () => {
                           className="w-full h-full object-contain"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center">
-                          <Button variant="secondary" size="sm" className="mb-4 gap-1.5">
-                            <Download className="h-3.5 w-3.5" />
-                            Download
-                          </Button>
+                          <a
+                            href={creative.imageUrl}
+                            download={`${creative.title.replace(/\s+/g, '_').toLowerCase()}.png`}
+                            onClick={async (e) => {
+                              e.preventDefault();
+                              await downloadImage(creative.imageUrl, `${creative.title.replace(/\s+/g, '_').toLowerCase()}.png`);
+                            }}
+                          >
+                            <Button variant="secondary" size="sm" className="mb-4 gap-1.5">
+                              <Download className="h-3.5 w-3.5" />
+                              Download
+                            </Button>
+                          </a>
                         </div>
                       </div>
                       <CardContent className="p-4">
@@ -624,7 +655,7 @@ const SubmitProduct = () => {
                 >
                   Create New
                 </Button>
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 gap-2">
+                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 gap-2" onClick={downloadAllImages}>
                   <Download className="h-4 w-4" />
                   Download All Assets
                 </Button>

@@ -39,26 +39,26 @@ export function AppSidebar() {
       icon: PlusCircle,
       href: "/submit",
     },
-    {
-      label: "My Creatives",
-      icon: Sparkles,
-      href: "/creatives",
-    },
+    // {
+    //   label: "My Creatives",
+    //   icon: Sparkles,
+    //   href: "/creatives",
+    // },
     {
       label: "Image Gallery",
       icon: ImageIcon,
-      href: "/gallery",
+      href: "/submissions",
     },
-    {
-      label: "Copy Library",
-      icon: TextIcon,
-      href: "/copy",
-    },
-    {
-      label: "Analytics",
-      icon: BarChart3,
-      href: "/analytics",
-    },
+    // {
+    //   label: "Copy Library",
+    //   icon: TextIcon,
+    //   href: "/copy",
+    // },
+    // {
+    //   label: "Analytics",
+    //   icon: BarChart3,
+    //   href: "/analytics",
+    // },
     {
       label: "Settings",
       icon: Settings,

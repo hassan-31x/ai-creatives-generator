@@ -29,6 +29,9 @@ model User {
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+
+  generatedImages       Int                    @default(0)
+  submissions          Submission[]           @relation("UserSubmissions")
 }
 
 model Account {
@@ -85,4 +88,30 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id])
 
   @@unique([userId])
+}
+
+model Submission {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String   @db.ObjectId
+  user              User     @relation("UserSubmissions", fields: [userId], references: [id])
+  createdAt         DateTime @default(now())
+  productName       String
+  productTagline    String
+  productCategory   String
+  highlightedBenefit String
+  productDescription String
+  brandName         String
+  brandTone         String
+  colorTheme        String
+  backgroundStyle   String
+  lightingStyle     String
+  productPlacement  String
+  typographyStyle   String
+  compositionGuidelines String
+  originalImage     String
+  instagramPostImage   String
+  instagramStoryImage  String
+  facebookPostImage    String
+  linkedinPostImage    String
+  websiteBannerImage   String
 }

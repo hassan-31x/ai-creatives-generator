@@ -1,11 +1,24 @@
 "use server"
 
+import { db } from "@/lib/db";
 import { generateCreativeAssets, CreativeAssetsResponse } from "@/utils/generateCreativeAssets";
 import { generateImages, GeneratedImage } from "@/utils/generateImages";
+import { getUserByEmail, getUserById } from "@/utils/user";
 
 // Server action to handle product submission and generate AI creatives
 export async function submitProductAction(formData: FormData) {
   try {
+
+    const user = await getUserById(formData.get("userId") as string)
+
+    if (!user) {
+      return { error: "User not found" }
+    }
+
+    if (user.generatedImages >= 1) {
+      return { error: "You have reached the maximum number of generated images" }
+    }
+
     // Extract all form data
     const productName = formData.get("productName") as string || "";
     const productTagline = formData.get("productTagline") as string || "";
@@ -120,14 +133,43 @@ export async function submitProductAction(formData: FormData) {
 
     // Step 2: Generate images based on the creative assets
     const generatedImages = await generateImages(creativeAssets, productData, productImage);
-    
-    // Log the generated images
-    console.log("Generated images:", JSON.stringify(generatedImages, null, 2));
 
-    // Return the generated images to the frontend
+    // Save submission in DB
+    const submission = await db.submission.create({
+      data: {
+        userId: user.id,
+        productName,
+        productTagline,
+        productCategory,
+        highlightedBenefit,
+        productDescription,
+        brandName,
+        brandTone,
+        colorTheme,
+        backgroundStyle,
+        lightingStyle,
+        productPlacement,
+        typographyStyle,
+        compositionGuidelines,
+        originalImage: generatedImages.find(img => img.type === 'product')?.imageUrl || '',
+        instagramPostImage: generatedImages.find(img => img.type === 'instagram_post')?.imageUrl || '',
+        instagramStoryImage: generatedImages.find(img => img.type === 'instagram_story')?.imageUrl || '',
+        facebookPostImage: generatedImages.find(img => img.type === 'facebook_post')?.imageUrl || '',
+        linkedinPostImage: generatedImages.find(img => img.type === 'linkedin_post')?.imageUrl || '',
+        websiteBannerImage: generatedImages.find(img => img.type === 'website_banner')?.imageUrl || '',
+      }
+    });
+
+    await db.user.update({
+      where: { id: user.id },
+      data: { generatedImages: { increment: 1 } }
+    });
+    
+    // Return the generated images and submission id to the frontend
     return {
       success: true,
-      creatives: generatedImages
+      creatives: generatedImages,
+      submissionId: submission.id
     };
   } catch (error) {
     console.error("Error in submitProductAction:", error);
