@@ -553,7 +553,7 @@ const SubmitProduct = () => {
                     <CardTitle>AI Creatives Generated Successfully</CardTitle>
                   </div>
                   <CardDescription>
-                    We've created {enhancedResults?.creatives?.length} marketing visuals for {form.productName}
+                    We&apos;ve created {enhancedResults?.creatives?.length} marketing visuals for {form.productName}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -635,7 +635,7 @@ const SubmitProduct = () => {
                             </div>
                             <div className="flex gap-1">
                               <span className="font-medium min-w-24">Overlay Text:</span>
-                              <span className="text-muted-foreground italic">"{creative.assetDetails.overlayText}"</span>
+                              <span className="text-muted-foreground italic">&quot;{creative.assetDetails.overlayText}&quot;</span>
                             </div>
                           </div>
                         )}

@@ -35,43 +35,43 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   //   return { success: "Confirmation email sent" }
   // }
   // TODO: remove this after testing
-  // if (existingUser.isTwoFactorEnabled && existingUser.email) {
-  //   if (code) {
-  //     const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
+  if (existingUser.isTwoFactorEnabled && existingUser.email) {
+    if (code) {
+      const twoFactorToken = await getTwoFactorTokenByEmail(existingUser.email)
 
-  //     if (!twoFactorToken || twoFactorToken.token !== code) {
-  //       return { error: "Invalid two factor code" }
-  //     }
+      if (!twoFactorToken || twoFactorToken.token !== code) {
+        return { error: "Invalid two factor code" }
+      }
 
-  //     const hasExpired = new Date() > twoFactorToken.expires
-  //     if (hasExpired) {
-  //       return { error: "Two factor code has expired" }
-  //     }
+      const hasExpired = new Date() > twoFactorToken.expires
+      if (hasExpired) {
+        return { error: "Two factor code has expired" }
+      }
 
-  //     await db.twoFactorToken.delete({
-  //       where: { id: twoFactorToken.id }
-  //     })
+      await db.twoFactorToken.delete({
+        where: { id: twoFactorToken.id }
+      })
 
-  //     const existingConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
-  //     if (existingConfirmation) {
-  //       await db.twoFactorConfirmation.delete({
-  //         where: { id: existingConfirmation.id }
-  //       })
-  //     }
+      const existingConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
+      if (existingConfirmation) {
+        await db.twoFactorConfirmation.delete({
+          where: { id: existingConfirmation.id }
+        })
+      }
 
-  //     await db.twoFactorConfirmation.create({
-  //       data: {
-  //         userId: existingUser.id
-  //       }
-  //     })
-  //   } else {
+      await db.twoFactorConfirmation.create({
+        data: {
+          userId: existingUser.id
+        }
+      })
+    } else {
 
-  //     const twoFactorToken = await generateTwoFactorToken(existingUser.email)
-  //     await sendTwoFactorEmail(existingUser.email, twoFactorToken.token)
+      const twoFactorToken = await generateTwoFactorToken(existingUser.email)
+      await sendTwoFactorEmail(existingUser.email, twoFactorToken.token)
       
-  //     return { twoFactor: true}
-  //   }
-  // } 
+      return { twoFactor: true}
+    }
+  } 
 
   try {
     await signIn("credentials", {
