@@ -78,7 +78,7 @@ Tone: ${productData.brandTone}
 Category: ${productData.productCategory}
 Benefit: ${productData.highlightedBenefit}
 
-Please provide creative styling suggestions for 5 different product assets in this exact JSON format:
+Please provide creative styling suggestions for 5 different product assets in this exact JSON format. Change the values according to the product data but keep the format same:
 
 {
 "assets": [
@@ -140,8 +140,10 @@ Please provide creative styling suggestions for 5 different product assets in th
       max_tokens: 1500,
       response_format: { type: "json_object" }
     });
+    console.log("🚀 ~ generateCreativeAssets ~ response:", response)
 
     const content = response.choices[0].message.content;
+    console.log("🚀 ~ generateCreativeAssets ~ content:", content)
     
     if (!content) {
       throw new Error("No content returned from OpenAI");
@@ -149,6 +151,7 @@ Please provide creative styling suggestions for 5 different product assets in th
 
     // Parse the JSON response
     const parsedResponse = JSON.parse(content) as CreativeAssetsResponse;
+    console.log("🚀 ~ generateCreativeAssets ~ parsedResponse:", parsedResponse)
     return parsedResponse;
   } catch (error) {
     console.error("Error generating creative assets:", error);

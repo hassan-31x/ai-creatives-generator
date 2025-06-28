@@ -51,49 +51,49 @@ export async function submitProductAction(formData: FormData) {
     const creativeAssets = {
       "assets": [
         {
-          "assetType": "Instagram Post",
-          "backgroundTone": "soft blush gradient",
-          "surfaceType": "satin draped cloth",
-          "accentProp": "gold-trimmed ribbon",
-          "lighting": "warm spotlight from the side",
-          "cameraAngle": "45-degree angle",
-          "overlayText": "Glow deeper. Shine brighter."
+          assetType: 'Instagram Post',
+          backgroundTone: 'rich midnight blue',
+          surfaceType: 'polished black marble',
+          accentProp: 'gold gaming controller',
+          lighting: 'soft spotlight with a halo effect',
+          cameraAngle: 'angled top-down view',
+          overlayText: 'Experience the pinnacle of play.'
         },
         {
-          "assetType": "Instagram Story",
-          "backgroundTone": "pale lavender with light streaks",
-          "surfaceType": "textured ceramic tray",
-          "accentProp": "scattered rose petals",
-          "lighting": "top-down diffused glow",
-          "cameraAngle": "zoomed-in overhead view",
-          "overlayText": "Hydration you can feel. Right now."
+          assetType: 'Instagram Story',
+          backgroundTone: 'deep royal purple',
+          surfaceType: 'velvet texture',
+          accentProp: 'silver coin stack',
+          lighting: 'intimate, focused beam',
+          cameraAngle: 'close-up, macro shot',
+          overlayText: 'Unlock the luxury of gaming.'
         },
         {
-          "assetType": "Website Banner",
-          "backgroundTone": "muted green stone texture",
-          "surfaceType": "brushed concrete slab",
-          "accentProp": "eucalyptus branch",
-          "lighting": "soft angled morning light",
-          "cameraAngle": "side-profile landscape",
-          "overlayText": "Glow like never before!"
+          assetType: 'Website Banner',
+          backgroundTone: 'subtle ivory gradient',
+          surfaceType: 'sleek glass panel',
+          accentProp: 'minimalistic geometric sculpture',
+          lighting: 'soft ambient glow',
+          cameraAngle: 'wide-angle panoramic',
+          overlayText: 'Elevate your entertainment.'
         },
         {
-          "assetType": "Ad Creative",
-          "backgroundTone": "deep emerald with gradient fade",
-          "surfaceType": "reflective glass base",
-          "accentProp": "frosted crystal orb",
-          "lighting": "dramatic backlight",
-          "cameraAngle": "elevated 3/4 angle",
-          "overlayText": "10% Off Today Only"
+          assetType: 'Ad Creative',
+          backgroundTone: 'dramatic charcoal grey',
+          surfaceType: 'glossy black acrylic',
+          accentProp: 'luxurious deep red silk',
+          lighting: 'intense side light with contrast',
+          cameraAngle: 'dynamic 3/4 perspective',
+          overlayText: 'Indulge in Gaming Elegance.'
         },
         {
-          "assetType": "Testimonial Graphic",
-          "backgroundTone": "cream linen with subtle shadows",
-          "surfaceType": "polished marble",
-          "accentProp": "single white tulip",
-          "lighting": "natural side lighting",
-          "cameraAngle": "clean straight-on view",
-          "overlayText": "My skin has never felt this good."
+          assetType: 'Testimonial Graphic',
+          backgroundTone: 'soft, warm beige',
+          surfaceType: 'smooth sandstone',
+          accentProp: 'delicate white orchid',
+          lighting: 'gentle natural illumination',
+          cameraAngle: 'calm eye-level view',
+          overlayText: 'Transform your leisure time.'
         }
       ]
     }
