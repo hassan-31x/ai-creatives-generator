@@ -15,6 +15,8 @@ export async function submitProductAction(formData: FormData) {
       return { error: "User not found" }
     }
 
+    console.log("User:", user);
+
     if (user.generatedImages >= 1) {
       return { error: "You have reached the maximum number of generated images" }
     }
