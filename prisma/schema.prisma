@@ -108,10 +108,20 @@ model Submission {
   productPlacement  String
   typographyStyle   String
   compositionGuidelines String
-  originalImage     String
-  instagramPostImage   String
-  instagramStoryImage  String
-  facebookPostImage    String
-  linkedinPostImage    String
-  websiteBannerImage   String
+  
+  // Original uploaded image
+  originalImageUrl     String
+  originalImagePublicId String
+  
+  // Generated creative images
+  instagramPostImageUrl   String
+  instagramPostImagePublicId String
+  instagramStoryImageUrl  String
+  instagramStoryImagePublicId String
+  facebookPostImageUrl    String
+  facebookPostImagePublicId String
+  linkedinPostImageUrl    String
+  linkedinPostImagePublicId String
+  websiteBannerImageUrl   String
+  websiteBannerImagePublicId String
 }

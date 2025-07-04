@@ -8,14 +8,14 @@ type Props = {}
 const ImageSlider = ({ submission }: { submission: any }) => {
   
   const images = [
-    submission.originalImage,
+    submission.originalImageUrl,
     ...imageTypes.map((img) => submission[img.key]).filter(Boolean),
   ];
   const [active, setActive] = useState(0);
 
   if (!images.length) return null;
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div className="relative w-[360px] h-[270px] flex items-center justify-center">
       <img
         src={images[active]}
         alt="Submission image"

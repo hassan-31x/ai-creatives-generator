@@ -2,7 +2,7 @@
 
 import { db } from "@/lib/db";
 import { generateCreativeAssets, CreativeAssetsResponse } from "@/utils/generateCreativeAssets";
-import { generateImages, GeneratedImage } from "@/utils/generateImages";
+import { generateImages, ImageGenerationResponse } from "@/utils/generateImages";
 import { getUserByEmail, getUserById } from "@/utils/user";
 
 // Server action to handle product submission and generate AI creatives
@@ -134,9 +134,10 @@ export async function submitProductAction(formData: FormData) {
     console.log("Generated creative assets:", JSON.stringify(creativeAssets, null, 2));
 
     // Step 2: Generate images based on the creative assets
-    const generatedImages = await generateImages(creativeAssets, productData, productImage);
+    const imageResponse = await generateImages(creativeAssets, productData, productImage);
+    const { generatedImages, originalImage } = imageResponse;
 
-    // Save submission in DB
+    // Save submission in DB with Cloudinary URLs and public IDs
     const submission = await db.submission.create({
       data: {
         userId: user.id,
@@ -153,12 +154,22 @@ export async function submitProductAction(formData: FormData) {
         productPlacement,
         typographyStyle,
         compositionGuidelines,
-        originalImage: generatedImages.find(img => img.type === 'product')?.imageUrl || '',
-        instagramPostImage: generatedImages.find(img => img.type === 'instagram_post')?.imageUrl || '',
-        instagramStoryImage: generatedImages.find(img => img.type === 'instagram_story')?.imageUrl || '',
-        facebookPostImage: generatedImages.find(img => img.type === 'facebook_post')?.imageUrl || '',
-        linkedinPostImage: generatedImages.find(img => img.type === 'linkedin_post')?.imageUrl || '',
-        websiteBannerImage: generatedImages.find(img => img.type === 'website_banner')?.imageUrl || '',
+        
+        // Original uploaded image
+        originalImageUrl: originalImage?.url || '',
+        originalImagePublicId: originalImage?.publicId || '',
+        
+        // Generated creative images
+        instagramPostImageUrl: generatedImages.find((img: any) => img.type === 'instagram_post')?.imageUrl || '',
+        instagramPostImagePublicId: generatedImages.find((img: any) => img.type === 'instagram_post')?.publicId || '',
+        instagramStoryImageUrl: generatedImages.find((img: any) => img.type === 'instagram_story')?.imageUrl || '',
+        instagramStoryImagePublicId: generatedImages.find((img: any) => img.type === 'instagram_story')?.publicId || '',
+        facebookPostImageUrl: generatedImages.find((img: any) => img.type === 'facebook_post')?.imageUrl || '',
+        facebookPostImagePublicId: generatedImages.find((img: any) => img.type === 'facebook_post')?.publicId || '',
+        linkedinPostImageUrl: generatedImages.find((img: any) => img.type === 'linkedin_post')?.imageUrl || '',
+        linkedinPostImagePublicId: generatedImages.find((img: any) => img.type === 'linkedin_post')?.publicId || '',
+        websiteBannerImageUrl: generatedImages.find((img: any) => img.type === 'website_banner')?.imageUrl || '',
+        websiteBannerImagePublicId: generatedImages.find((img: any) => img.type === 'website_banner')?.publicId || '',
       }
     });
 

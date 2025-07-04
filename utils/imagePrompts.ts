@@ -23,6 +23,11 @@ Follow the brand's identity and styling rules:
 Feel free to include overlay text - "${assetDetails.overlayText}". Ensure it is clearly legible, elegantly styled, and placed harmoniously within the composition. 
 
 This should be a clean, emotionally resonant product visual — worthy of a high-end Instagram or print campaign.
+
+Ensure the text is:
+- Spelled perfectly
+- Accurately placed with visual balance
+- Should not be cutting off from the edged
   `,
   
   "Instagram Story": (assetDetails: any, productData: any) => `
@@ -48,6 +53,10 @@ Feel free to include overlay text - "${assetDetails.overlayText}". Ensure it is 
 
 This should feel refined, light, and scroll-stopping on a premium ${productData.productCategory} brand's Instagram Story.
 
+Ensure the text is:
+- Spelled perfectly
+- Accurately placed with visual balance
+- Should not be cutting off from the edged
   `,
   
   "Website Banner": (assetDetails: any, productData: any) => `
@@ -56,7 +65,7 @@ This should feel refined, light, and scroll-stopping on a premium ${productData.
 This asset is for a homepage hero section. It must feel **spacious, minimal, and refined**, with clean off-center layout and breathing room. Visually, it should contrast from the bolder social assets and feel more ambient.
 The product image is provided — do not alter it. Integrate it into a clean, web-friendly layout with ample negative space.
 
-Use a ${assetDetails.backgroundTone} background that works well on large desktop screens — think smooth gradients, soft textures, or minimal fabric scenes. Place the product on a ${assetDetails.surfaceType} with a clear left or right alignment.
+Use a ${assetDetails.backgroundTone} background that works well on large desktop screens. Place the product on a ${assetDetails.surfaceType} with a clear left or right alignment.
 
 Include a single complementary accent prop such as a ${assetDetails.accentProp} — soft, grounded, and not distracting. Keep the overall layout breathable.
 
@@ -73,6 +82,10 @@ Feel free to include overlay text - "${assetDetails.overlayText}". Ensure it is 
 
 This should feel modern, clean, and aligned with a premium ${productData.productCategory} homepage aesthetic.
 
+Ensure the text is:
+- Spelled perfectly
+- Accurately placed with visual balance
+- Should not be cutting off from the edged
   `,
   
   "Ad Creative": (assetDetails: any, productData: any) => `
@@ -98,6 +111,10 @@ Feel free to include overlay text - "${assetDetails.overlayText}". Ensure it is 
 
 This should stop the scroll and feel luxurious, modern, and ad-ready while staying true to the brand.
 
+Ensure the text is:
+- Spelled perfectly
+- Accurately placed with visual balance
+- Should not be cutting off from the edged
   `,
   
   "Testimonial Graphic": (assetDetails: any, productData: any) => `
@@ -123,6 +140,11 @@ Feel free to include overlay text - "${assetDetails.overlayText}". Ensure it is 
 
 
 This image should quietly support a testimonial or review without overshadowing it — calm, minimal, and emotionally resonant.
+
+Ensure the text is:
+- Spelled perfectly
+- Accurately placed with visual balance
+- Should not be cutting off from the edged
   `
 };
 
