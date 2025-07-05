@@ -25,9 +25,11 @@ import {
   Twitter,
   Globe,
   LayoutTemplate,
-  FileText as TextIcon
+  FileText as TextIcon,
+  Wand2
 } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { AIAssistantModal } from "@/components/ai-assistant-modal";
 
 const initialForm = {
   productName: "",
@@ -59,6 +61,7 @@ const SubmitProduct = () => {
   const [result, setResult] = useState<any>(null);
   const [pending, startTransition] = useTransition();
   const [activeTab, setActiveTab] = useState<string>("form");
+  const [showAIModal, setShowAIModal] = useState(false);
 
   const { data: session } = useSession();
 
@@ -78,6 +81,20 @@ const SubmitProduct = () => {
 
   const handleCategoryChange = (value: string) => {
     setForm((prev) => ({ ...prev, productCategory: value }));
+  };
+
+  const handleAIDataGenerated = (data: any) => {
+    setForm((prev) => ({
+      ...prev,
+      brandName: data.brandName || prev.brandName,
+      brandTone: data.brandTone || prev.brandTone,
+      colorTheme: data.colorTheme || prev.colorTheme,
+      backgroundStyle: data.backgroundStyle || prev.backgroundStyle,
+      lightingStyle: data.lightingStyle || prev.lightingStyle,
+      productPlacement: data.productPlacement || prev.productPlacement,
+      typographyStyle: data.typographyStyle || prev.typographyStyle,
+      compositionGuidelines: data.compositionGuidelines || prev.compositionGuidelines
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -267,10 +284,25 @@ const SubmitProduct = () => {
               {/* Advanced Information Card */}
               <Card className="lg:col-span-2">
                 <CardHeader>
-                  <CardTitle>Advanced Information</CardTitle>
-                  <CardDescription>
-                    Fine-tune the creative direction for your brand and product visuals
-                  </CardDescription>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>Advanced Information</CardTitle>
+                      <CardDescription>
+                        Fine-tune the creative direction for your brand and product visuals
+                      </CardDescription>
+                    </div>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setShowAIModal(true)}
+                      className="gap-2 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 hover:from-purple-100 hover:to-blue-100"
+                      disabled={!form.productName || !form.productCategory}
+                    >
+                      <Wand2 className="h-4 w-4 text-purple-600" />
+                      Write with AI
+                    </Button>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -668,6 +700,15 @@ const SubmitProduct = () => {
           )}
         </TabsContent>
       </Tabs>
+
+      {/* AI Assistant Modal */}
+      <AIAssistantModal
+        open={showAIModal}
+        onOpenChange={setShowAIModal}
+        productName={form.productName}
+        productCategory={form.productCategory}
+        onDataGenerated={handleAIDataGenerated}
+      />
     </div>
   );
 };

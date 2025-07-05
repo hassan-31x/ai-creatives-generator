@@ -84,48 +84,48 @@ Please provide creative styling suggestions for 5 different product assets in th
 "assets": [
 {
 "assetType": "Instagram Post",
-"backgroundTone": "soft blush gradient",
-"surfaceType": "satin draped cloth",
-"accentProp": "gold-trimmed ribbon",
-"lighting": "warm spotlight from the side",
-"cameraAngle": "45-degree angle",
-"overlayText": "Glow deeper. Shine brighter."
+"backgroundTone": "",
+"surfaceType": "",
+"accentProp": "",
+"lighting": "",
+"cameraAngle": "",
+"overlayText": ""
 },
 {
 "assetType": "Instagram Story",
-"backgroundTone": "pale lavender with light streaks",
-"surfaceType": "textured ceramic tray",
-"accentProp": "scattered rose petals",
-"lighting": "top-down diffused glow",
-"cameraAngle": "zoomed-in overhead view",
-"overlayText": "Hydration you can feel. Right now."
+"backgroundTone": "",
+"surfaceType": "",
+"accentProp": "",
+"lighting": "",
+"cameraAngle": "",
+"overlayText": ""
 },
 {
 "assetType": "Website Banner",
-"backgroundTone": "muted green stone texture",
-"surfaceType": "brushed concrete slab",
-"accentProp": "eucalyptus branch",
-"lighting": "soft angled morning light",
-"cameraAngle": "side-profile landscape",
-"overlayText": "Glow like never before!"
+"backgroundTone": "",
+"surfaceType": "",
+"accentProp": "",
+"lighting": "",
+"cameraAngle": "",
+"overlayText": ""
 },
 {
 "assetType": "Ad Creative",
-"backgroundTone": "deep emerald with gradient fade",
-"surfaceType": "reflective glass base",
-"accentProp": "frosted crystal orb",
-"lighting": "dramatic backlight",
-"cameraAngle": "elevated 3/4 angle",
-"overlayText": "10% Off Today Only"
+"backgroundTone": "",
+"surfaceType": "",
+"accentProp": "",
+"lighting": "",
+"cameraAngle": "",
+"overlayText": ""
 },
 {
 "assetType": "Testimonial Graphic",
-"backgroundTone": "cream linen with subtle shadows",
-"surfaceType": "polished marble",
-"accentProp": "single white tulip",
-"lighting": "natural side lighting",
-"cameraAngle": "clean straight-on view",
-"overlayText": "My skin has never felt this good."
+"backgroundTone": "",
+"surfaceType": "",
+"accentProp": "",
+"lighting": "",
+"cameraAngle": "",
+"overlayText": ""
 }
 ]
 }`;

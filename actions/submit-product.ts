@@ -70,55 +70,6 @@ export async function submitProductAction(formData: FormData) {
     // Step 1: Generate creative assets using OpenAI
     let creativeAssets;
     
-    // creativeAssets = {
-    //   assets: [
-    //     {
-    //       assetType: 'Instagram Post',
-    //       backgroundTone: 'rich midnight blue',
-    //       surfaceType: 'polished black marble',
-    //       accentProp: 'gold gaming controller',
-    //       lighting: 'soft spotlight with a halo effect',
-    //       cameraAngle: 'angled top-down view',
-    //       overlayText: 'Experience the pinnacle of play.'
-    //     },
-    //     {
-    //       assetType: 'Instagram Story',
-    //       backgroundTone: 'deep royal purple',
-    //       surfaceType: 'velvet texture',
-    //       accentProp: 'silver coin stack',
-    //       lighting: 'intimate, focused beam',
-    //       cameraAngle: 'close-up, macro shot',
-    //       overlayText: 'Unlock the luxury of gaming.'
-    //     },
-    //     {
-    //       assetType: 'Website Banner',
-    //       backgroundTone: 'subtle ivory gradient',
-    //       surfaceType: 'sleek glass panel',
-    //       accentProp: 'minimalistic geometric sculpture',
-    //       lighting: 'soft ambient glow',
-    //       cameraAngle: 'wide-angle panoramic',
-    //       overlayText: 'Elevate your entertainment.'
-    //     },
-    //     {
-    //       assetType: 'Ad Creative',
-    //       backgroundTone: 'dramatic charcoal grey',
-    //       surfaceType: 'glossy black acrylic',
-    //       accentProp: 'luxurious deep red silk',
-    //       lighting: 'intense side light with contrast',
-    //       cameraAngle: 'dynamic 3/4 perspective',
-    //       overlayText: 'Indulge in Gaming Elegance.'
-    //     },
-    //     {
-    //       assetType: 'Testimonial Graphic',
-    //       backgroundTone: 'soft, warm beige',
-    //       surfaceType: 'smooth sandstone',
-    //       accentProp: 'delicate white orchid',
-    //       lighting: 'gentle natural illumination',
-    //       cameraAngle: 'calm eye-level view',
-    //       overlayText: 'Transform your leisure time.'
-    //     }
-    //   ]
-    // };
 
     // Generate real creative assets using OpenAI
     creativeAssets = await generateCreativeAssets({
